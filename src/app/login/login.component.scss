@@ -1,7 +1,5 @@
 @use '@angular/material' as mat;
 
-@include mat.core();
-
 mat-card {
   width: 400px;
   margin: auto;
