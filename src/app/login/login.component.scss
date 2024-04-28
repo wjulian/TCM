@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+mat-card {
+  width: 400px;
+  margin: auto;
+}
+
+mat-form-field {
+  display: block;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+mat-error{
+  margin-bottom: 1rem;
+}
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: map-get(mat.$deep-purple-palette, 'A200');
+}

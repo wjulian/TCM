@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      @if(user.role === 'Patient'){
+      <a mat-list-item router-link="home/clinical-history">
+        <span>Mi historia clínica</span>
+      </a>
+      }
+      <a
+        mat-list-item
+        routerLink="/home/appointments"
+        routerLinkActive="router-link-active"
+        >Mis citas</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+      <span>TCM</span>
+      <div class="profile">
+        <span>Bienvenido {{ userName }}</span>
+        <button
+          type="button"
+          mat-icon-button
+          (click)="logout()"
+          aria-label="logout"
+        >
+          <mat-icon aria-label="logout icon">logout</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
