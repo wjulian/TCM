@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <h1>TCM - Ingreso</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Ingresa tu email</mat-label>
+        <input matInput formControlName="email" />
+        @if (loginFormControls.email.hasError('email')) {
+          <mat-error>{{INVALID_EMAIL_MESSAGE}}</mat-error>
+        }
+        @if (loginFormControls.email.hasError('required')) {
+          <mat-error>{{REQUIRED_EMAIL_MESSAGE}}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ingresa tu contraseña</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          type="button"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        @if (loginFormControls.password.hasError('required')) {
+          <mat-error>{{REQUIRED_PASSWORD_MESSAGE}}</mat-error>
+        }
+      </mat-form-field>
+      @if (autorized === false) {
+        <mat-error>{{NOT_AUTORIZED_MESSAGE}}</mat-error>
+      }
+      <div class="button-container">
+        <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          Ingresar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
