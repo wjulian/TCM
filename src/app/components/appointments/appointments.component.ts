@@ -1,14 +1,16 @@
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user.interface';
-import { UserAppointment } from '../models/appointment.interface';
-import { appointments } from '../mocks/appointments-mock';
+import { User } from '../../models/user.interface';
+import { UserAppointment } from '../../models/appointment.interface';
+import { appointments } from '../../mocks/appointments-mock';
 import { CommonModule } from '@angular/common';
 import { MatCard, MatCardContent, MatCardHeader } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { patients } from '../mocks/patients-mock';
-import { doctors } from '../mocks/doctors-mock';
+import { patients } from '../../mocks/patients-mock';
+import { doctors } from '../../mocks/doctors-mock';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-appointments',
@@ -20,13 +22,17 @@ import { MatIcon } from '@angular/material/icon';
     MatCardContent,
     MatChipsModule,
     MatDivider,
-    MatIcon
+    MatIcon,
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './appointments.component.html',
   styleUrl: './appointments.component.scss',
 })
 export class AppointmentsComponent implements OnInit {
   user!: User;
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   userAppointments!: UserAppointment[];
 
@@ -68,5 +74,9 @@ export class AppointmentsComponent implements OnInit {
     } else {
       this.userAppointments = appointments;
     }
+  }
+
+  nuevaCita() {
+    this.router.navigate(['/home/appointments/new']);
   }
 }

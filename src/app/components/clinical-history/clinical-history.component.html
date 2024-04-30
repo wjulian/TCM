@@ -1,0 +1,98 @@
+<mat-card>
+  <mat-card-header>
+    <h1>Historia Clinica</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <section class="mb-1">
+      <mat-grid-list cols="5" rowHeight="3rem">
+        <mat-grid-tile colspan="2" [rowspan]="2" [style]="borderTile"
+          ><span class="fs-6 fw-500"
+            >Información básica del paciente</span
+          ></mat-grid-tile
+        >
+        <mat-grid-tile colspan="1" [rowspan]="1" [style]="borderTile"
+          ><label class="fw-500 mr-1">Nombre:</label
+          ><span>{{ patient?.name }}</span></mat-grid-tile
+        >
+        <mat-grid-tile colspan="1" [rowspan]="1" [style]="borderTile"
+          ><label class="fw-500 mr-1">Edad:</label
+          ><span>{{ patient?.age }}</span></mat-grid-tile
+        >
+        <mat-grid-tile colspan="1" [rowspan]="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Sexo:</label
+          ><span>{{ patient?.genre | genre }}</span></mat-grid-tile
+        >
+        <mat-grid-tile colspan="2" [rowspan]="1" [style]="borderTile"
+          ><label class="fw-500 mr-1">Dirección:</label
+          ><span>{{ patient?.address }}</span></mat-grid-tile
+        >
+        <mat-grid-tile colspan="1" [rowspan]="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Teléfono:</label
+          ><span>{{ patient?.phoneNumber }}</span>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+    <section class="mb-1">
+      <mat-grid-list cols="6" rowHeight="3rem">
+        <mat-grid-tile colspan="3" [rowspan]="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Fecha de la Consulta:</label
+          ><span>{{
+            clinicalHistory?.visit?.at(0)?.date | date : "shortDate"
+          }}</span>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" [rowspan]="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Motivo de la Consulta:</label
+          ><span>{{ clinicalHistory?.visit?.at(0)?.reason }}</span>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+
+    <section class="mb-1">
+      <mat-grid-list cols="3" rowHeight="3rem">
+        <mat-grid-tile colspan="3" rowspan="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Impresión diagnóstica:</label
+          ><span>{{ clinicalHistory?.visit?.at(0)?.diagnosis }}</span>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3" rowspan="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Plan:</label
+          ><span>{{ clinicalHistory?.visit?.at(0)?.plan }}</span>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="3" rowspan="1" [style]="borderTile">
+          <label class="fw-500 mr-1">Examen Físico:</label
+          ><span>{{ clinicalHistory?.visit?.at(0)?.physicalExam }}</span>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+    <section>
+      <mat-grid-list cols="1" rowHeight="3rem">
+        <mat-grid-tile colspan="1" rowspan="3" [style]="borderTile">
+          <label class="fw-500 mr-1">Historia de la enfermedad actual:</label>
+          @if(clinicalHistory?.illness && clinicalHistory?.illness?.length ?? 0
+          > 0) {
+          <ul>
+            @for (item of clinicalHistory?.illness; track $index) {
+            <li>item</li>
+            }
+          </ul>
+          } @else{
+          <span>N/A</span>
+          }
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="3" [style]="borderTile">
+          <label class="fw-500 mr-1">Medicación Actual</label>
+          @if(clinicalHistory?.currentMedication &&
+          clinicalHistory?.currentMedication?.length ?? 0 > 0) {
+          <ul>
+            @for (item of clinicalHistory?.currentMedication; track $index) {
+            <li>item</li>
+            }
+          </ul>
+          } @else{
+          <span>N/A</span>
+          }
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+  </mat-card-content>
+</mat-card>

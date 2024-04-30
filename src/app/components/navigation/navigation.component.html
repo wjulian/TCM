@@ -10,8 +10,20 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       @if(user.role === 'Patient'){
-      <a mat-list-item router-link="home/clinical-history">
+      <a
+        mat-list-item
+        routerLink="/home/clinical-history"
+        routerLinkActive="router-link-active"
+      >
         <span>Mi historia clínica</span>
+      </a>
+      } @if(user.role === 'Doctor'){
+      <a
+        mat-list-item
+        routerLink="/home/clinical-histories"
+        routerLinkActive="router-link-active"
+      >
+        <span>Historias clínicas</span>
       </a>
       }
       <a

@@ -1,0 +1,64 @@
+
+<div class="d-flex flex-column p-4">
+  <section class="header">
+    <h1>Citas</h1>
+  </section>
+
+  <section class="button-container p-2">
+    <button mat-flat-button color="primary" (click)="nuevaCita()">Nueva cita</button>
+  </section>
+
+  @if(!userAppointments || userAppointments.length === 0){
+  <mat-card>
+    <mat-card-header> <h2>No tienes citas asignadas</h2></mat-card-header>
+  </mat-card>
+
+  } @else {
+  <section class="appointments">
+    @for (appointment of userAppointments; track $index) {
+    <mat-card class="appointment mb-1">
+      <mat-card-content>
+        <div class="appointment-content">
+          <div class="appoint-status">
+            <mat-chip>{{ appointment.state }}</mat-chip>
+            <h3>{{ appointment.date | date : "EEEE" }}</h3>
+            <h3>{{ appointment.date | date : "shortDate" }}</h3>
+            <h2>{{ appointment.date | date : "shortTime" }}</h2>
+          </div>
+          <div class="appoint-info p-2">
+            <div class="d-flex w-100 p-1 justify-content-start">
+              <div class="p-1">
+                <mat-icon class="face-icon" aria-label="face icon"
+                  >face</mat-icon
+                >
+              </div>
+              <div class="d-flex flex-column mb-1">
+                <span class="fs-5 mb-1">{{ appointment.doctorName }}</span>
+                <span class="fs-6">{{ appointment.procedure }}</span>
+              </div>
+            </div>
+            <mat-divider class="mb-1"></mat-divider>
+            <div class="d-flex p-1 align-items-center">
+              <mat-icon class="place-icon">place</mat-icon>
+              <span>{{ appointment.site }}</span>
+            </div>
+            <div class="d-flex px-1 align-items-center">
+              <mat-icon class="place-icon">place</mat-icon>
+              <span>{{ appointment.address }}</span>
+            </div>
+          </div>
+          <div class="appoint-actions">
+            <button type="button">
+              <mat-icon title="Editar fecha cita">edit</mat-icon>
+            </button>
+            <button type="button">
+              <mat-icon title="cancelar cita">cancel presentation</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </section>
+  }
+</div>

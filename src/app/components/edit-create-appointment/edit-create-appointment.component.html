@@ -1,0 +1,90 @@
+<div class="p-4">
+  <h1>{{ title }}</h1>
+  <mat-card>
+    <mat-card-content>
+      <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="specialityForm">
+          <form [formGroup]="specialityForm">
+            <ng-template matStepLabel>Elige la especialidad</ng-template>
+            <mat-form-field>
+              <mat-label>Especialidad</mat-label>
+              <mat-select formControlName="speciality">
+                @for (speciality of specialties; track speciality) {
+                <mat-option [value]="speciality.key">{{
+                  speciality.value
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button type="button" [disabled]="specialityForm.invalid" mat-flat-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="procedureForm">
+          <form [formGroup]="procedureForm">
+            <ng-template matStepLabel>Selecciona el Procedimiento</ng-template>
+            <mat-form-field>
+              <mat-label>Elige el procedimiento</mat-label>
+              <mat-select formControlName="procedure">
+                @for (procedure of procedures; track procedure) {
+                <mat-option [value]="procedure.key">{{
+                  procedure.value
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button type="button" class="mr-2" mat-flat-button color="basic" matStepperPrevious>Atrás</button>
+              <button type="button" [disabled]="procedureForm.invalid" mat-flat-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="dateForm">
+          <form [formGroup]="dateForm">
+            <ng-template matStepLabel>Selecciona la fecha</ng-template>
+            <mat-form-field>
+              <mat-label>Elige la fecha</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="date" [matDatepickerFilter]="dateFilter" [min]="minDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div>
+              <button type="button" class="mr-2" mat-flat-button color="basic" matStepperPrevious>Atrás</button>
+              <button type="button" [disabled]="dateForm.invalid" mat-flat-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="siteForm">
+          <form [formGroup]="siteForm">
+            <ng-template matStepLabel>Selecciona el centro médico</ng-template>
+            <mat-form-field>
+              <mat-label>Elige el centro médico</mat-label>
+              <mat-select formControlName="site">
+                @for (site of sites; track site) {
+                <mat-option [value]="site.key">{{
+                  site.value
+                }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <div>
+              <button type="button" class="mr-2" mat-flat-button color="basic" matStepperPrevious>Atrás</button>
+              <button type="button" [disabled]="siteForm.invalid" mat-flat-button color="primary" matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Hecho!</ng-template>
+          <p>Estás a un paso! presiona completar para confirmar la cita.</p>
+          <div>
+            <button type="button" class="mr-2"mat-flat-button color="warn" (click)="stepper.reset()">Reiniciar</button>
+            <button type="button" class="mr-2" mat-flat-button color="basic" matStepperPrevious>Atrás</button>
+            <button type="button" mat-flat-button color="primary" (click)="newAppointment()">Completar</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </mat-card-content>
+  </mat-card>
+</div>

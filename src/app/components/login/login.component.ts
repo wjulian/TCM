@@ -1,4 +1,4 @@
-import { users } from './../mocks/users-mock';
+import { users } from '../../mocks/users-mock';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
@@ -14,7 +14,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { TokenSession, User } from '../models/user.interface';
+import { TokenSession, User } from '../../models/user.interface';
 @Component({
   selector: 'app-login',
   standalone: true,
