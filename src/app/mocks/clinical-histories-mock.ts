@@ -1,6 +1,6 @@
 import { ClinicalHistory } from '../models/clinical-history.interface';
 
-export const ClinicalHistories = [
+export const clinicalHistories = [
   {
     patientId: 1, // Asigna un ID único para Ana Pérez
     illness: ['Diabetes tipo 2', 'Hipertensión arterial'],

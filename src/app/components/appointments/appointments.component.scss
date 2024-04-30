@@ -1,0 +1,93 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+.header {
+  padding: 2rem;
+  text-align: center;
+}
+
+mat-card-content {
+  padding: 0 !important;
+}
+
+.appointments {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.appointment-content {
+  display: flex;
+}
+
+.appoint-status {
+  flex-shrink: 1;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: map-get(mat.$deep-purple-palette, "A100");
+}
+
+.appoint-info {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.face-icon {
+  width: 2.5rem;
+  transform: scale(1.5);
+}
+
+.place-icon {
+  transform: scale(0.7);
+}
+
+.appoint-actions {
+  flex-shrink: 0.5;
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.appointment{
+  width: 75%;
+}
+
+.appoint-actions button {
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  width: 5rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: map-get(mat.$deep-purple-palette, 100);
+}
+.appoint-actions button:first-child {
+  border-top-right-radius: 0.5rem;
+}
+.appoint-actions button:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.appoint-actions button:hover {
+  background-color: map-get(mat.$deep-purple-palette, 200);
+  transform: scale(1.01);
+}
+
+.appoint-actions button mat-icon {
+  transform: scale(1.5);
+}
+
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationComponent } from '../navigation/navigation.component';
-import { User } from '../models/user.interface';
+import { NavigationComponent } from '../../components/navigation/navigation.component';
+import { User } from '../../models/user.interface';
 
 @Component({
   selector: 'app-home-layout',

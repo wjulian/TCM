@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
-import { User } from '../models/user.interface';
+import { User } from '../../models/user.interface';
 
 @Component({
   selector: 'app-navigation',
